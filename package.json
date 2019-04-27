@@ -4,6 +4,7 @@
   "description": "A Synology command line client",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "qs": "^6.7.0",
     "request": "^2.88.0"
   },

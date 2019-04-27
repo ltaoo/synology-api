@@ -28,7 +28,7 @@ class Synology {
     constructor(options) {
         this.options = options;
 
-        this.commonPath = 'entry.cgi';
+        this.commonPath = '/entry.cgi';
         this.Auth = Auth(this);
         this.FileStation = FileStation(this);
     }

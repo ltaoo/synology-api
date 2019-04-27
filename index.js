@@ -1,5 +1,9 @@
 const path = require('path');
+
+require("dotenv").config();
 const Synology = require('./src');
+
+const { USERNAME, PASSWORD } = process.env;
 
 const synology = new Synology({
     host: '192.168.1.4',
@@ -9,15 +13,15 @@ const synology = new Synology({
 async function init () {
     try {
         await synology.Auth.auth({
-            username: 'ltaoo',
-            password: 'qq862945626',
+            username: USERNAME,
+            password: PASSWORD,
         });
 
-        // const res = await synology.FileStation.upload({
-        //     path: '/home',
-        //     file: path.join(__dirname, './example.jpg'),
-        // });
-        // console.log(res);
+        const res = await synology.FileStation.upload({
+            path: '/home',
+            file: path.join(__dirname, './example.jpg'),
+        });
+        console.log(res.body);
     } catch(err) {
         console.error(err);
     }

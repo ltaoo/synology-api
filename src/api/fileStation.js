@@ -6,7 +6,6 @@
 const fs = require('fs');
 
 const request = require('request');
-const qs = require('qs');
 
 /**
  * 上传文件
@@ -22,15 +21,16 @@ function upload(params) {
 
     const queryObj = {
         api,
-        method: 'uplaod',
+        method: 'upload',
         version: 2,
     // _sid: sid,
     };
 
-    const query = qs.stringify({ ...queryObj, _sid: sid });
-    const search = `?${query}`;
+    // const query = qs.stringify({ ...queryObj, _sid: sid });
+    // const search = `?${query}`;
 
-    const url = this.stringify({ path, search });
+    const url = this.stringify({ path, params: { ...queryObj, _sid: sid } });
+    console.log(url);
     return new Promise((resolve, reject) => {
         const r = request({ url }, (err, response, body) => {
             if (err) {
