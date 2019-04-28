@@ -57,9 +57,13 @@ async function init() {
         // });
         // console.log(body.error);
         // move or copy
-        const body = await FileStation.copyMove({
-            path: '/home/e.jpg',
-            dest_folder_path: '/home/test1',
+        // const body = await FileStation.copyMove({
+        //     path: '/home/e.jpg',
+        //     dest_folder_path: '/home/test1',
+        // });
+        // console.log(body);
+        const body = await FileStation.delete({
+            path: '/home/test1/e.jpg',
         });
         console.log(body);
     } catch (err) {
