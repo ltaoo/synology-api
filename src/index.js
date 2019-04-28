@@ -2,12 +2,12 @@
  * @file synology api
  * @author ltaoo<litaowork@aliyun.com>
  */
-require('module-alias/register');
 const qs = require('qs');
 
 const Auth = require('./api/auth');
 const FileStation = require('./api/fileStation');
 const ERROR_CODE = require('./constants');
+
 
 class Synology {
     constructor(options) {
@@ -16,6 +16,18 @@ class Synology {
         this.COMMON_PATH = '/entry.cgi';
         this.Auth = Auth(this);
         this.FileStation = FileStation(this);
+
+        this.init();
+    }
+
+    init() {
+        const { NODE_ENV } = this.options;
+        const { log } = console;
+        console.log = function logger(...args) {
+            if (NODE_ENV === 'dev' || process.env.NODE_ENV === 'dev') {
+                log.apply(console, args);
+            }
+        };
     }
 
     /**

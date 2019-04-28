@@ -1,21 +1,23 @@
 {
-  "name": "synology-api",
+  "name": "syno-api",
   "version": "1.0.0",
-  "description": "A Synology command line client",
+  "description": "A simple wrapper for the Synology FileStation API",
+  "keywords": [
+    "synology",
+    "fileStation",
+    "upload",
+    "download"
+  ],
   "license": "MIT",
   "dependencies": {
     "dotenv": "^7.0.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "module-alias": "^2.2.0",
     "qs": "^6.7.0",
     "request": "^2.88.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.17.2"
-  },
-  "_moduleAliases": {
-    "@": "./src"
   }
 }

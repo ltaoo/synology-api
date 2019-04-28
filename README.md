@@ -108,6 +108,12 @@ await synology.FileStation.delete({
 });
 ```
 
+## TODO
+[] 使用自定义日志打印替代 console.log 
+
+### download
+[]文件不存在时返回正确的错误信息
+
 ## 参考
 
 - [How can I upload a file to a Synology diskstation with PHP
