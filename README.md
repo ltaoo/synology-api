@@ -42,7 +42,11 @@ async function init () {
         await synology.FileStation.upload({
             path: '/home',
             file: path.join(__dirname, './example.jpg'),
+            // 支持下载网络图片，如果网络地址最后不带后缀，必须添加 name 参数
+            // file: 'http://imgpolitics.gmw.cn/attachement/jpg/site2/20190428/f44d305ea48e1e2f58565d.jpg',
+            // name: 'xxx.jpg',
         });
+        //
     } catch(err) {
         console.error(err);
     }
