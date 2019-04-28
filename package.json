@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^7.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
     "module-alias": "^2.2.0",
     "qs": "^6.7.0",
     "request": "^2.88.0"
