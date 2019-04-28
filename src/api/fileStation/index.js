@@ -9,6 +9,7 @@ const list = require('./list');
 const search = require('./search');
 const upload = require('./upload');
 const download = require('./download');
+const createFolder = require('./createFolder');
 
 const apis = {
     info,
@@ -16,6 +17,7 @@ const apis = {
     search,
     upload,
     download,
+    createFolder,
 };
 
 module.exports = exp(apis);

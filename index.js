@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 
 require('dotenv').config();
 const Synology = require('./src');
@@ -32,17 +32,24 @@ async function init() {
         //     pattern: '6x',
         // });
         // console.log(data);
-        await FileStation.download({
-            path: '/home/6xmt_b.jpg',
-            to: path.join(__dirname, './image/example1.jpg'),
-            mode: 'download',
-        });
+        // upload
         // const res = await FileStation.upload({
         //     path: '/home',
         //     overwrite: 'true',
         //     file: path.join(__dirname, './example.jpg'),
         // });
         // console.log(res.body);
+        // download
+        // await FileStation.download({
+        //     path: '/home/6xmt_b.jpg',
+        //     to: path.join(__dirname, './image/example1.jpg'),
+        //     mode: 'download',
+        // });
+        // create folder
+        await FileStation.createFolder({
+            folder_path: '/home',
+            name: 'test',
+        });
     } catch (err) {
         console.error(err);
     }
