@@ -44,7 +44,16 @@ const FILE_STATION_ERROR_CODE = {
 };
 
 const FILE_STATION_API_ERROR_CODE = {
+    1000: 'Failed to copy files/folders. More information in <errors> object.',
+    1001: 'Failed to move files/folders. More information in <errors> object.',
+    1002: 'An error occurred at the destination. More information in <errors> object.',
+    1003: 'Cannot overwrite or skip the existing file because no overwrite parameter is given.',
+    1004: 'File cannot overwrite a folder with the same name, or folder cannot overwrite a file with the same name.',
+    1006: 'Cannot copy/move file/folder with special characters to a FAT32 file system.',
+    1007: 'Cannot copy/move a file bigger than 4G to a FAT32 file system.',
+    // rename
     1200: 'Failed to rename it. More information in <errors> object.',
+    // upload
     1800: 'There is no Content-Length information in the HTTP header or the received size doesn’t match the value of Content-Length information in the HTTP header.',
     1801: 'Wait too long, no date can be received from client (Default maximum wait time is 3600 seconds).',
     1802: 'No filename information in the last part of file content.',

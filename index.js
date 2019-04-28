@@ -51,13 +51,19 @@ async function init() {
         //     name: 'test',
         // });
         // rename
-        const body = await FileStation.rename({
-            path: '/home/6xmt_b.jpg',
-            name: 'e.jpg',
+        // const body = await FileStation.rename({
+        //     path: '/home/6xmt_b.jpg',
+        //     name: 'e.jpg',
+        // });
+        // console.log(body.error);
+        // move or copy
+        const body = await FileStation.copyMove({
+            path: '/home/e.jpg',
+            dest_folder_path: '/home/test1',
         });
-        console.log(body.error);
+        console.log(body);
     } catch (err) {
-        console.error(err);
+        console.error('operation failed', err);
     }
 }
 
