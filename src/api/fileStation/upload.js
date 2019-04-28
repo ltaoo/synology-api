@@ -1,3 +1,6 @@
+/**
+ * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
+ */
 const fs = require('fs');
 const request = require('request');
 const ERROR_CODE = require('@/constants');
@@ -6,6 +9,7 @@ const ERROR_CODE = require('@/constants');
  * @param {UploadOptions} params
  * @param {string} params.path - 要上传到的目录
  * @param {Path} params.file - 要上传的文件路径
+ * @param {string} [params.overwrite=false] - 文件已存在是否覆盖
  * @return {Promise}
  */
 function upload(params) {
@@ -19,21 +23,10 @@ function upload(params) {
         version: 2,
     };
 
-    const url = this.stringify({ path, params: { ...queryObj, _sid: sid } });
+    const url = this.stringify({ path, params: queryObj });
     console.log(url);
     return new Promise((resolve, reject) => {
-        const r = request({ url }, (err, response, body) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            console.log('upload success', body);
-            const { data } = JSON.parse(body);
-            if (data.success === false && data.error) {
-                data.msg = ERROR_CODE[data.error.code];
-            }
-            resolve(response, data);
-        });
+        const r = request({ url }, this.callback.bind(this, resolve, reject));
         const form = r.form();
         Object.keys(params).forEach((key) => {
             let value = params[key];

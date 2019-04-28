@@ -1,11 +1,24 @@
 /**
  * @file FileStation
  * @author ltaoo<litaowork@aliyun.com>
- * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
  */
 
 const upload = require('./upload');
+const info = require('./info');
 
-module.exports = instance => ({
-    upload: upload.bind(instance),
-});
+const apis = {
+    info,
+    upload,
+};
+
+function bindFunctions(funcs, instance) {
+    return Object.keys(funcs).reduce((a, b) => {
+        const func = funcs[b];
+        a[b] = func.bind(instance);
+        return a;
+    }, {});
+}
+
+module.exports = instance => {
+    return bindFunctions(apis, instance);
+}

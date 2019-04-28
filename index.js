@@ -12,17 +12,20 @@ const synology = new Synology({
 
 async function init () {
     try {
-        await synology.Auth.auth({
+        const { Auth, FileStation } = synology;
+        // login
+        await Auth.auth({
             username: USERNAME,
             password: PASSWORD,
         });
-
-        const res = await synology.FileStation.upload({
-            path: '/home',
-            overwrite: 'true',
-            file: path.join(__dirname, './example.jpg'),
-        });
-        console.log(res.body);
+        // filestation info
+        const res = await FileStation.info();
+        // const res = await FileStation.upload({
+        //     path: '/home',
+        //     overwrite: 'true',
+        //     file: path.join(__dirname, './example.jpg'),
+        // });
+        // console.log(res.body);
     } catch(err) {
         console.error(err);
     }
