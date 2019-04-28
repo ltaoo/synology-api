@@ -45,12 +45,12 @@ class Synology {
             reject(err);
             return;
         }
-        const { data } = JSON.parse(body);
-        if (data.success === false && data.error) {
-            data.msg = ERROR_CODE[data.error.code];
+        const content = JSON.parse(body);
+        if (content.success === false && content.error) {
+            content.msg = ERROR_CODE[content.error.code];
         }
-        console.log('request success', data);
-        resolve(response, data);
+        console.log('request success', content);
+        resolve(content, response);
     }
 }
 

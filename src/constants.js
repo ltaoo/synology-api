@@ -9,6 +9,14 @@ const COMMON_ERROR_CODE = {
     107: 'Session interrupted by duplicate logi',
 };
 
+const AUTH_ERROR_CODE = {
+    400: 'No such account or incorrect password',
+    401: 'Account disabled',
+    402: 'Permission denied',
+    403: '2-step verification code required',
+    404: 'Failed to authenticate 2-step verification code',
+};
+
 const FILE_STATION_ERROR_CODE = {
     400: 'Invalid parameter of file operation',
     401: 'Unknown error of file operation',
@@ -49,6 +57,7 @@ const ERROR_CODE = {
     ...FILE_STATION_ERROR_CODE,
     ...FILE_STATION_API_ERROR_CODE,
     COMMON_ERROR_CODE,
+    AUTH_ERROR_CODE,
     FILE_STATION_ERROR_CODE,
     FILE_STATION_API_ERROR_CODE,
 };

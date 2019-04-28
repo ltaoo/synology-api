@@ -24,7 +24,14 @@ async function init() {
         // info
         // await FileStation.info();
         // list
-        await FileStation.list({ limit: 5 });
+        // await FileStation.list({ limit: 2 });
+        // search
+        const data = await FileStation.search({
+            folder_path: '/home',
+            // 包含的文件名
+            pattern: '6x',
+        });
+        console.log(data);
         // const res = await FileStation.upload({
         //     path: '/home',
         //     overwrite: 'true',

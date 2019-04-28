@@ -3,14 +3,16 @@
  * @author ltaoo<litaowork@aliyun.com>
  */
 
-const upload = require('./upload');
 const info = require('./info');
 const list = require('./list');
+const search = require('./search');
+const upload = require('./upload');
 
 const apis = {
     info,
-    upload,
     list,
+    search,
+    upload,
 };
 
 function bindFunctions(funcs, instance) {
