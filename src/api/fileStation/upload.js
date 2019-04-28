@@ -3,7 +3,6 @@
  */
 const fs = require('fs');
 const request = require('request');
-const ERROR_CODE = require('@/constants');
 /**
  * 上传文件
  * @param {UploadOptions} params
@@ -15,7 +14,6 @@ const ERROR_CODE = require('@/constants');
 function upload(params) {
     const api = 'SYNO.FileStation.Upload';
     const path = this.COMMON_PATH;
-    const { sid } = this.options;
 
     const queryObj = {
         api,

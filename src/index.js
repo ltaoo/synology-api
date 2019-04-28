@@ -3,27 +3,11 @@
  * @author ltaoo<litaowork@aliyun.com>
  */
 require('module-alias/register');
-const request = require('request');
 const qs = require('qs');
 
 const Auth = require('./api/auth');
 const FileStation = require('./api/fileStation');
 const ERROR_CODE = require('./constants');
-/**
- * @param {string} host
- * @param {number} port
- * @param {string} path
- * @param {Object} params
- * @param {string} search - if exist params, this will be overwrite
- * @return {string}
- */
-function url({ host, port, path, params, search: tempSearch }) {
-    let search = tempSearch;
-    if (params) {
-        search = '?' + qs.stringify(params);
-    }
-    return `http://${host}:${port}${path}${search}`;
-}
 
 class Synology {
     constructor(options) {
@@ -32,7 +16,6 @@ class Synology {
         this.COMMON_PATH = '/entry.cgi';
         this.Auth = Auth(this);
         this.FileStation = FileStation(this);
-        console.log(FileStation, this.FileStation);
     }
 
     /**
@@ -45,6 +28,7 @@ class Synology {
         const { host, port, sid } = this.options;
         const queryObj = params;
         if (queryObj.api !== 'SYNO.API.Auth') {
+            /* eslint-disable no-underscore-dangle */
             queryObj._sid = sid;
         }
         const query = qs.stringify(queryObj);
@@ -52,13 +36,7 @@ class Synology {
         return `http://${host}:${port}/webapi${path}${search}`;
     }
 
-    /**
-     * 发起请求
-     */
-    fetch() {
-
-    }
-
+    /* eslint-disable class-methods-use-this */
     /**
      * 共用的请求后回调函数
      */
