@@ -1,4 +1,4 @@
-// const path = require('path');
+const path = require('path');
 
 require('dotenv').config();
 const Synology = require('./src');
@@ -26,12 +26,17 @@ async function init() {
         // list
         // await FileStation.list({ limit: 2 });
         // search
-        const data = await FileStation.search({
-            folder_path: '/home',
-            // 包含的文件名
-            pattern: '6x',
+        // const data = await FileStation.search({
+        //     folder_path: '/home',
+        //     // 包含的文件名
+        //     pattern: '6x',
+        // });
+        // console.log(data);
+        await FileStation.download({
+            path: '/home/6xmt_b.jpg',
+            to: path.join(__dirname, './image/example1.jpg'),
+            mode: 'download',
         });
-        console.log(data);
         // const res = await FileStation.upload({
         //     path: '/home',
         //     overwrite: 'true',

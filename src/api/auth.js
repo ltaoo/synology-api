@@ -4,6 +4,7 @@
  * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
  */
 const request = require('request');
+const exp = require('./utils');
 /**
  * @param {string} username
  * @param {string} password
@@ -19,13 +20,13 @@ function auth({
 }) {
     const api = 'SYNO.API.Auth';
     const path = '/auth.cgi';
-    // check(username, 'username not exist');
     const params = {
         api,
         method: 'login',
         version: 3,
         account: username || account,
         passwd: password || passwd,
+        format,
     };
     const url = this.stringify({ path, params });
     console.log(url);
@@ -35,16 +36,14 @@ function auth({
                 reject(err);
                 return;
             }
-            console.log('auth success', body);
-            const data = JSON.parse(body).data;
-            this.options.sid = data.sid;
-            resolve(response, body);
+            const content = JSON.parse(body);
+            console.log('auth success', content);
+            if (content.success === true) {
+                this.options.sid = content.data.sid;
+            }
+            resolve(body, response);
         });
     });
 }
 
-module.exports = (instance) => {
-    return {
-        auth: auth.bind(instance),
-    };
-};
+module.exports = exp({ auth });
