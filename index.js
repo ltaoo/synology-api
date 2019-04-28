@@ -19,6 +19,7 @@ async function init () {
 
         const res = await synology.FileStation.upload({
             path: '/home',
+            overwrite: 'true',
             file: path.join(__dirname, './example.jpg'),
         });
         console.log(res.body);

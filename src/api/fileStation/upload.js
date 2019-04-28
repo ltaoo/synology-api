@@ -1,12 +1,6 @@
-/**
- * @file FileStation
- * @author ltaoo<litaowork@aliyun.com>
- * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
- */
 const fs = require('fs');
-
 const request = require('request');
-
+const ERROR_CODE = require('@/constants');
 /**
  * 上传文件
  * @param {UploadOptions} params
@@ -16,18 +10,14 @@ const request = require('request');
  */
 function upload(params) {
     const api = 'SYNO.FileStation.Upload';
-    const path = this.commonPath;
+    const path = this.COMMON_PATH;
     const { sid } = this.options;
 
     const queryObj = {
         api,
         method: 'upload',
         version: 2,
-    // _sid: sid,
     };
-
-    // const query = qs.stringify({ ...queryObj, _sid: sid });
-    // const search = `?${query}`;
 
     const url = this.stringify({ path, params: { ...queryObj, _sid: sid } });
     console.log(url);
@@ -37,7 +27,12 @@ function upload(params) {
                 reject(err);
                 return;
             }
-            resolve(response, body);
+            console.log('upload success', body);
+            const { data } = JSON.parse(body);
+            if (data.success === false && data.error) {
+                data.msg = ERROR_CODE[data.error.code];
+            }
+            resolve(response, data);
         });
         const form = r.form();
         Object.keys(params).forEach((key) => {
@@ -50,6 +45,4 @@ function upload(params) {
     });
 }
 
-module.exports = instance => ({
-    upload: upload.bind(instance),
-});
+module.exports = upload;

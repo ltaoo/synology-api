@@ -733,6 +733,10 @@ mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
+module-alias@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/module-alias/download/module-alias-2.2.0.tgz#a2e32275381642252bf0c51405f7a09a367479b5"
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
