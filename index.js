@@ -46,10 +46,16 @@ async function init() {
         //     mode: 'download',
         // });
         // create folder
-        await FileStation.createFolder({
-            folder_path: '/home',
-            name: 'test',
+        // await FileStation.createFolder({
+        //     folder_path: '/home',
+        //     name: 'test',
+        // });
+        // rename
+        const body = await FileStation.rename({
+            path: '/home/6xmt_b.jpg',
+            name: 'e.jpg',
         });
+        console.log(body.error);
     } catch (err) {
         console.error(err);
     }

@@ -44,6 +44,7 @@ const FILE_STATION_ERROR_CODE = {
 };
 
 const FILE_STATION_API_ERROR_CODE = {
+    1200: 'Failed to rename it. More information in <errors> object.',
     1800: 'There is no Content-Length information in the HTTP header or the received size doesn’t match the value of Content-Length information in the HTTP header.',
     1801: 'Wait too long, no date can be received from client (Default maximum wait time is 3600 seconds).',
     1802: 'No filename information in the last part of file content.',
