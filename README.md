@@ -13,7 +13,7 @@ const synology = new Synology({
 
 ### Login
 
-```
+```js
 async function init () {
     try {
         await synology.Auth.auth({
@@ -61,13 +61,13 @@ init();
 await synology.FileStation.download({
     path: '/home/6xmt_b.jpg',
     to: path.join(__dirname, './image/example1.jpg'),
-    mode: 'download',
+    mode: 'download'
 });
 ```
 
 ### Search
 
-```js
+```javascript
 // search
 const data = await synology.FileStation.search({
     folder_path: '/home',
@@ -112,8 +112,23 @@ await synology.FileStation.delete({
 });
 ```
 
+## example
+
+在项目根目录增加 `.env` 文件，并填写如下内容：
+
+```
+ACCOUNT = your account username
+PASSWD = your account password
+HOST = host like 192.168.1.4
+PORT = 5000
+NODE_ENV = dev
+```
+
+然后执行 `node example/index.js`，终端会显示当前请求的地址与结果。
+如果出现 `auth success {"data":{"sid":"jiEIqBgVWZuCU1840QMRH4C3AV"},"success":true}` 这种数据就表示登录成功。
+
 ## TODO
-[] 使用自定义日志打印替代 console.log 
+[√] 使用自定义日志打印替代 console.log 
 
 ### download
 []文件不存在时返回正确的错误信息

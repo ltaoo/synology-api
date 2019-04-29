@@ -37,11 +37,13 @@ function auth({
                 return;
             }
             const content = appendErrorMessage(body, 'AUTH_ERROR_CODE');
-            logger.info('auth success', content);
             if (content.success === true) {
+                logger.info('auth success', content);
                 this.options.sid = content.data.sid;
+                resolve(body, response);
+                return;
             }
-            resolve(body, response);
+            reject(content, response);
         });
     });
 }

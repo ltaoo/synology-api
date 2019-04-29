@@ -1,9 +1,9 @@
-const path = require('path');
+// const path = require('path');
 
 const Synology = require('../index.js');
 
 const {
-    USERNAME, PASSWORD, HOST, PORT,
+    ACCOUNT, PASSWD, HOST, PORT,
 } = process.env;
 
 const synology = new Synology({
@@ -16,8 +16,8 @@ async function init() {
         const { Auth, FileStation } = synology;
         // login
         await Auth.auth({
-            username: USERNAME,
-            password: PASSWORD,
+            username: ACCOUNT,
+            password: PASSWD,
         });
         /**
          * ------------- FileStation --------------
@@ -65,7 +65,7 @@ async function init() {
         //     path: '/home/test1/e.jpg',
         // });
     } catch (err) {
-        console.error('operation failed', err);
+        console.error(err);
     }
 }
 

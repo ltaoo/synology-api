@@ -1,6 +1,9 @@
+require('dotenv').config({
+    path: '.env',
+    // overwrite: true,
+});
 const Synology = require('./src');
 const { createLogger, transports, format } = require('winston');
-require('dotenv').config();
 
 const { printf, timestamp, prettyPrint }= format;
 const { NODE_ENV } = process.env;

@@ -8,6 +8,10 @@
     "upload",
     "download"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ltaoo/synology-api.git"
+  },
   "license": "MIT",
   "dependencies": {
     "dotenv": "^7.0.0",
