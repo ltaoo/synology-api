@@ -4,7 +4,7 @@
  * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
  */
 const request = require('request');
-const exp = require('./utils');
+const { appendErrorMessage, exportModules } = require('../utils');
 /**
  * @param {string} username
  * @param {string} password
@@ -29,15 +29,15 @@ function auth({
         format,
     };
     const url = this.stringify({ path, params });
-    console.log(url);
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, (err, response, body) => {
             if (err) {
                 reject(err);
                 return;
             }
-            const content = JSON.parse(body);
-            console.log('auth success', content);
+            const content = appendErrorMessage(body, 'AUTH_ERROR_CODE');
+            logger.info('auth success', content);
             if (content.success === true) {
                 this.options.sid = content.data.sid;
             }
@@ -46,4 +46,4 @@ function auth({
     });
 }
 
-module.exports = exp({ auth });
+module.exports = exportModules({ auth });

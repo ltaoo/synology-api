@@ -23,7 +23,7 @@ function del({
     };
 
     const url = this.stringify({ path: reqPath, params: queryObj });
-    console.log(url);
+    logger.info(url);
 
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));

@@ -36,7 +36,7 @@ function start(params) {
     };
     const url = this.stringify({ path, params: queryObj });
 
-    console.log('start search', url);
+    logger.info('start search', url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });
@@ -67,7 +67,7 @@ function list(params) {
         ...params,
     };
     const url = this.stringify({ path, params: queryObj });
-    console.log('list search', url);
+    logger.info('list search', url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });
@@ -90,7 +90,7 @@ function stop(params) {
     };
     const url = this.stringify({ path, params: queryObj });
 
-    console.log('stop search', url);
+    logger.info('stop search', url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });
@@ -113,7 +113,7 @@ function clean(params) {
     };
     const url = this.stringify({ path, params: queryObj });
 
-    console.log('clean search', url);
+    logger.info('clean search', url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });

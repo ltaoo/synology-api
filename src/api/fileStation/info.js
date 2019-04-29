@@ -15,6 +15,7 @@ function info() {
         version: 2,
     };
     const url = this.stringify({ path, params: queryObj });
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });

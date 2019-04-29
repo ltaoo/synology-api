@@ -38,7 +38,7 @@ function start({
         search_taskid,
     };
     const url = this.stringify({ path: reqPath, params: queryObj });
-    console.log(url);
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });
@@ -55,7 +55,7 @@ function status({ taskid }) {
         taskid,
     };
     const url = this.stringify({ path, params: queryObj });
-    console.log(url);
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, (err, response, body) => {
             if (err) {
@@ -84,7 +84,7 @@ function stop({ taskid }) {
         taskid,
     };
     const url = this.stringify({ path, params: queryObj });
-    console.log(url);
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });

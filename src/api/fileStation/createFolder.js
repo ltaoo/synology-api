@@ -22,7 +22,7 @@ function createFolder(params) {
         ...params,
     };
     const url = this.stringify({ path, params: queryObj });
-    console.log(url);
+    logger.info(url);
     return new Promise((resolve, reject) => {
         request({ url }, this.callback.bind(this, resolve, reject));
     });

@@ -37,7 +37,7 @@ function upload(params) {
     };
 
     const url = this.stringify({ path, params: queryObj });
-    console.log(url);
+    logger.info(url);
     return new Promise(async (resolve, reject) => {
         const r = request({ url }, this.callback.bind(this, resolve, reject));
         const form = r.form();

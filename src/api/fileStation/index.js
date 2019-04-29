@@ -4,7 +4,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const exp = require('../utils');
+const { exportModules } = require('../../utils');
 
 const files = fs.readdirSync(path.join(__dirname, './')).filter(file => file !== 'index.js');
 const apis = files.reduce((prev, file) => {
@@ -16,4 +16,4 @@ const apis = files.reduce((prev, file) => {
     return modules;
 }, {});
 
-module.exports = exp(apis);
+module.exports = exportModules(apis);
