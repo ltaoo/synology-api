@@ -2,18 +2,19 @@
  * @doc https://cndl.synology.cn/download/Document/DeveloperGuide/Synology_File_Station_API_Guide.pdf#page=63&zoom=100,0,174
  */
 const fs = require('fs');
+const path = require('path');
 const request = require('request');
 
-function basename(path, defaultName) {
-    if (path.slice(0, 4) === 'http') {
-        const paths = path.split('/');
+function basename(p, defaultName) {
+    if (p.slice(0, 4) === 'http') {
+        const paths = p.split('/');
         const filename = paths[paths.length - 1];
         if (!filename.includes('.')) {
             return defaultName;
         }
         return filename;
     }
-    return path.basename(path);
+    return path.basename(p);
 }
 
 /**
@@ -28,7 +29,7 @@ function basename(path, defaultName) {
 function upload(params) {
     const { name } = params;
     const api = 'SYNO.FileStation.Upload';
-    const path = this.COMMON_PATH;
+    const reqPath = this.COMMON_PATH;
 
     const queryObj = {
         api,
@@ -36,7 +37,7 @@ function upload(params) {
         version: 2,
     };
 
-    const url = this.stringify({ path, params: queryObj });
+    const url = this.stringify({ path: reqPath, params: queryObj });
     logger.info(url);
     return new Promise(async (resolve, reject) => {
         const r = request({ url }, this.callback.bind(this, resolve, reject));

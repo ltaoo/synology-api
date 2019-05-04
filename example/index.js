@@ -1,5 +1,4 @@
-// const path = require('path');
-
+const path = require('path');
 const Synology = require('../index.js');
 
 const {
@@ -21,14 +20,14 @@ async function init() {
         });
 
         synology.update({
-            host: '115.193.189.48',
+            host: '192.168.1.4',
         });
         /**
          * ------------- FileStation --------------
          */
         // info
-        const data = await FileStation.info();
-        console.log(data);
+        // const data = await FileStation.info();
+        // console.log(data);
         // list
         // await FileStation.list({ limit: 2 });
         // // search
@@ -39,11 +38,13 @@ async function init() {
         // });
         // logger.info(data);
         // // upload
-        // await FileStation.upload({
-        //     path: '/home',
-        //     overwrite: 'true',
-        //     file: path.join(__dirname, './example.jpg'),
-        // });
+        await FileStation.upload({
+            path: '/home',
+            // overwrite: 'true',
+            file: path.join(__dirname, './example.jpg'),
+            // file: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=317358076,3499491004&fm=173&app=49&f=JPEG?w=218&h=146&s=011E827D05D0DC635AA5A57B03004073',
+            // name: 'hello.gif',
+        });
         // // download
         // await FileStation.download({
         //     path: '/home/6xmt_b.jpg',
