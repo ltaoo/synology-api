@@ -5,6 +5,11 @@ const fs = require('fs');
 const path = require('path');
 const request = require('request');
 
+/**
+ * 获取上传文件的文件名
+ * @param {*} p
+ * @param {*} defaultName
+ */
 function basename(p, defaultName) {
     if (defaultName) {
         return defaultName;
@@ -12,8 +17,9 @@ function basename(p, defaultName) {
     if (p.slice(0, 4) === 'http') {
         const paths = p.split('/');
         const filename = paths[paths.length - 1];
+        // 如果没有文件名，应该随机生成一个，但是后缀又不知道是什么
         if (!filename.includes('.')) {
-            return defaultName;
+            return Date.now().toString();
         }
         return filename;
     }
@@ -30,7 +36,6 @@ function basename(p, defaultName) {
  * @return {Promise}
  */
 function upload(params) {
-    const { name } = params;
     const api = 'SYNO.FileStation.Upload';
     const reqPath = this.COMMON_PATH;
 
@@ -45,7 +50,7 @@ function upload(params) {
     return new Promise(async (resolve, reject) => {
         const r = request({ url }, this.callback.bind(this, resolve, reject));
         const form = r.form();
-        const { file, ...restParams } = params;
+        const { file, name, ...restParams } = params;
         Object.keys(restParams).forEach((key) => {
             const value = restParams[key];
             form.append(key, value);

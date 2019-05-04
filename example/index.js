@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const path = require('path');
 const Synology = require('../index.js');
 
@@ -41,9 +42,10 @@ async function init() {
         await FileStation.upload({
             path: '/home/Downloads',
             // overwrite: 'true',
-            file: path.join(__dirname, './example.jpg'),
-            name: 'hello.jpg',
-            // file: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=317358076,3499491004&fm=173&app=49&f=JPEG?w=218&h=146&s=011E827D05D0DC635AA5A57B03004073',
+            // file: path.join(__dirname, './example.jpg'),
+            name: undefined,
+            // name: 'hello.jpg',
+            file: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=317358076,3499491004&fm=173&app=49&f=JPEG?w=218&h=146&s=011E827D05D0DC635AA5A57B03004073',
             // name: 'hello.gif',
         });
         // // download
