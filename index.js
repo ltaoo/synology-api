@@ -2,14 +2,14 @@ require('dotenv').config({
     path: '.env',
     // overwrite: true,
 });
-const Synology = require('./src');
 const { createLogger, transports, format } = require('winston');
+const Synology = require('./src');
 
-const { printf, timestamp, prettyPrint }= format;
+const { printf, timestamp, prettyPrint } = format;
 const { NODE_ENV } = process.env;
 
-const myFormat = printf(({ level, message, timestamp }) => {
-    const time = new Date(timestamp).toLocaleString();
+const myFormat = printf(({ level, message, _timestamp }) => {
+    const time = new Date(_timestamp).toLocaleString();
     return `[${time}] ${level}: ${message}`;
 });
 const logger = createLogger({
@@ -20,18 +20,17 @@ const logger = createLogger({
         myFormat,
     ),
 });
-const wrapper = (original) => {
-    return (...args) => {
-        for (let index = 0; index < args.length; index++) {
-            if(args[index] instanceof Error){
-                args[index] = args[index].stack;
-            }
-            if (typeof args[index] === 'object') {
-                args[index] = JSON.stringify(args[index]);
-            }
+const wrapper = original => (...args) => {
+    const argAry = args;
+    for (let index = 0; index < args.length; index += 1) {
+        if (args[index] instanceof Error) {
+            argAry[index] = args[index].stack;
         }
-        original(args.join(' '));
+        if (typeof args[index] === 'object') {
+            argAry[index] = JSON.stringify(args[index]);
+        }
     }
+    original(argAry.join(' '));
 };
 logger.error = wrapper(logger.error);
 logger.warn = wrapper(logger.warn);
