@@ -6,6 +6,9 @@ const path = require('path');
 const request = require('request');
 
 function basename(p, defaultName) {
+    if (defaultName) {
+        return defaultName;
+    }
     if (p.slice(0, 4) === 'http') {
         const paths = p.split('/');
         const filename = paths[paths.length - 1];

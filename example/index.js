@@ -39,9 +39,10 @@ async function init() {
         // logger.info(data);
         // // upload
         await FileStation.upload({
-            path: '/home',
+            path: '/home/Downloads',
             // overwrite: 'true',
             file: path.join(__dirname, './example.jpg'),
+            name: 'hello.jpg',
             // file: 'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=317358076,3499491004&fm=173&app=49&f=JPEG?w=218&h=146&s=011E827D05D0DC635AA5A57B03004073',
             // name: 'hello.gif',
         });
