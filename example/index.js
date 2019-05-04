@@ -19,11 +19,16 @@ async function init() {
             username: ACCOUNT,
             password: PASSWD,
         });
+
+        synology.update({
+            host: '115.193.189.48',
+        });
         /**
          * ------------- FileStation --------------
          */
         // info
-        await FileStation.info();
+        const data = await FileStation.info();
+        console.log(data);
         // list
         // await FileStation.list({ limit: 2 });
         // // search

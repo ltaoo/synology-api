@@ -18,6 +18,17 @@ class Synology {
     }
 
     /**
+     * 使用新的配置项覆盖已有的
+     * @param {Object} options
+     */
+    update(options) {
+        this.options = {
+            ...this.options,
+            ...options,
+        };
+    }
+
+    /**
      * 组装请求地址
      * @param {string} path - 请求的 api 地址
      * @param {Object} params - 查询参数
