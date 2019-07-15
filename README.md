@@ -4,6 +4,10 @@ Synology api 的一层封装，方便调用，其他类似的库都不支持上�
 
 ## Usage
 
+```bash
+yarn add @ltaoo/synology-api
+```
+
 ```js
 const synology = new Synology({
     host: '192.168.1.4',

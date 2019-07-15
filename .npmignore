@@ -1,0 +1,11 @@
+node_modules
+package-lock.json
+yarn.lock
+
+example
+example.jpg
+LICENSE
+
+.editorconfig
+.eslintrc
+.gitignore
