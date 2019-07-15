@@ -26,6 +26,7 @@ function auth({
         version: 3,
         account: username || account,
         passwd: password || passwd,
+        session: 'FileStation',
         format,
     };
     const url = this.stringify({ path, params });
