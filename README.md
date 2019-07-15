@@ -8,10 +8,22 @@ Synology api 的一层封装，方便调用，其他类似的库都不支持上�
 yarn add @ltaoo/synology-api
 ```
 
+### Init
+
+- internal IP
 ```js
 const synology = new Synology({
+    protocol: 'http'
     host: '192.168.1.4',
     port: 5000,
+});
+```
+- external URL
+```js
+const synology = new Synology({
+    protocol: 'https'
+    host: 'john.synology.me',
+    port: 5001,
 });
 ```
 
@@ -132,7 +144,7 @@ NODE_ENV = dev
 如果出现 `auth success {"data":{"sid":"jiEIqBgVWZuCU1840QMRH4C3AV"},"success":true}` 这种数据就表示登录成功。
 
 ## TODO
-[√] 使用自定义日志打印替代 console.log 
+[√] 使用自定义日志打印替代 console.log
 
 ### download
 []文件不存在时返回正确的错误信息

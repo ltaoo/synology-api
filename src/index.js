@@ -35,7 +35,7 @@ class Synology {
      * @return {URL}
      */
     stringify({ path, params }) {
-        const { host, port, sid } = this.options;
+        const { protocol, host, port, sid } = this.options;
         const queryObj = params;
         if (queryObj.api !== 'SYNO.API.Auth') {
             /* eslint-disable no-underscore-dangle */
@@ -43,7 +43,7 @@ class Synology {
         }
         const query = qs.stringify(queryObj);
         const search = `?${query}`;
-        return `http://${host}:${port}/webapi${path}${search}`;
+        return `${protocol}://${host}:${port}/webapi${path}${search}`;
     }
 
     /* eslint-disable class-methods-use-this */
