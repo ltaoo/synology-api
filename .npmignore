@@ -9,3 +9,8 @@ LICENSE
 .editorconfig
 .eslintrc
 .gitignore
+.vscode
+.env
+.eslintrc.js
+LICENSE
+*.log
