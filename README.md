@@ -13,7 +13,7 @@ yarn add @ltaoo/synology-api
 - internal IP
 ```js
 const synology = new Synology({
-    protocol: 'http'
+    protocol: 'http',
     host: '192.168.1.4',
     port: 5000,
 });
@@ -21,7 +21,7 @@ const synology = new Synology({
 - external URL
 ```js
 const synology = new Synology({
-    protocol: 'https'
+    protocol: 'https',
     host: 'john.synology.me',
     port: 5001,
 });
