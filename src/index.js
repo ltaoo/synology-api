@@ -35,7 +35,9 @@ class Synology {
      * @return {URL}
      */
     stringify({ path, params }) {
-        const { protocol, host, port, sid } = this.options;
+        const {
+            protocol = 'http', host, port = '5000', sid,
+        } = this.options;
         const queryObj = params;
         if (queryObj.api !== 'SYNO.API.Auth') {
             /* eslint-disable no-underscore-dangle */
