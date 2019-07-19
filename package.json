@@ -1,28 +1,28 @@
 {
-  "name": "@ltaoo/synology",
-  "version": "1.4.0",
-  "description": "A simple wrapper for the Synology FileStation API",
-  "keywords": [
-    "synology",
-    "fileStation",
-    "upload",
-    "download"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ltaoo/synology-api.git"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^7.0.0",
-    "qs": "^6.7.0",
-    "request": "^2.88.0",
-    "winston": "^3.2.1"
-  },
-  "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-import": "^2.17.2"
-  }
+    "name": "@ltaoo/synology",
+    "version": "1.4.1",
+    "description": "A simple wrapper for the Synology FileStation API",
+    "keywords": [
+        "synology",
+        "fileStation",
+        "upload",
+        "download"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/ltaoo/synology-api.git"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "dotenv": "^7.0.0",
+        "qs": "^6.7.0",
+        "request": "^2.88.0",
+        "winston": "^3.2.1"
+    },
+    "devDependencies": {
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-import-resolver-alias": "^1.1.2",
+        "eslint-plugin-import": "^2.17.2"
+    }
 }
